@@ -1,0 +1,16 @@
+<ul>
+  
+  <% @events.each do |event| %>
+  <li>
+  <%= link_to event.name, event_path(event) %>
+  <%= link_to " (XML)", event_path(event, :format => :xml) %>
+    <%= link_to " (JSON)", event_path(event, :format => :json) %>
+  <%= link_to 'Edit', edit_event_path(event) %>
+  <%= button_to 'delete', event_path(event), :method => :delete %>
+  </li>
+<% end %>
+</ul>
+
+<%= link_to 'New event', new_event_path %> <!--new)event_path => /events/new -->
+<br><br>
+<%= paginate @events %>
