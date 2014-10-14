@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   
   def index
     @events = Event.page(params[:page]).per(5)
-    
+    flash[:notice] = "Hello! 您好"
     respond_to do |format|
     format.html # index.html.erb
     format.xml { render :xml => @events.to_xml }

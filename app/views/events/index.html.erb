@@ -2,15 +2,23 @@
   
   <% @events.each do |event| %>
   <li>
-  <%= link_to event.name, event_path(event) %>
-  <%= link_to " (XML)", event_path(event, :format => :xml) %>
-    <%= link_to " (JSON)", event_path(event, :format => :json) %>
-  <%= link_to 'Edit', edit_event_path(event) %>
-  <%= button_to 'delete', event_path(event), :method => :delete %>
+	  <%= link_to event.name, event_path(event),
+	  	:class => "btn btn-sm btn-default" %>
+	  <%= link_to " (XML)", event_path(event, :format => :xml) %>
+	  <%= link_to " (JSON)", event_path(event, :format => :json) %>
+	  <%= link_to 'Edit', edit_event_path(event),
+	  	:class => "btn btn-sm btn-default" %>
+	  <%= link_to 'delete', event_path(event), 
+	  	:class => "btn btn-sm btn-default",
+	  	:method => :delete,
+	  	data: { confirm: "Are you sure?" } %>
+	  <!-- link_to => 若瀏覽器沒開javascript => button_to -->
   </li>
 <% end %>
 </ul>
 
-<%= link_to 'New event', new_event_path %> <!--new)event_path => /events/new -->
+<%= link_to 'New event', new_event_path,
+	:class => "btn btn-primary pull-right"%> 
+<!--new event_path => /events/new -->
 <br><br>
 <%= paginate @events %>
