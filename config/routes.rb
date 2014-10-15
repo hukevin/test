@@ -1,7 +1,18 @@
 Rails.application.routes.draw do
+  devise_for :users
+  
+  resources :groups do
+    member do
+      post :join
+      post :quit
+    end
+
+    resources :posts
+  end
+
   resources :events
   resources :people
-
+  root :to => "groups#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -58,7 +69,7 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   
-  root :to => "welcome#index"
+
   get "welcome/say_hello" => "welcome#say"
   get "welcome" =>"welcome#index"
   

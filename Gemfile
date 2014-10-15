@@ -45,4 +45,7 @@ gem 'spring',        group: :development
 gem "kaminari"
 
 gem "simple_form"
-# rails 101 s example
+# rails 101 s form
+
+gem 'devise'
+# rails 101 s users function
